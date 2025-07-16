@@ -1,18 +1,45 @@
-## Getting Started
+# Universidad [Nombre de tu Universidad]
+# Estructura de Datos - Ciclo 2
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+---
 
-## Folder Structure
+## Carátula
 
-The workspace contains two folders by default, where:
+**Nombre:** Mateo  
+**Fecha:** 16 de julio de 2025  
+**Tema:** Programación Dinámica - Fibonacci Recursivo y con Memoización
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+---
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## imagen
+![alt text](image.png)
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Resumen
 
-## Dependency Management
+En este proyecto se implementaron dos versiones del cálculo de la serie de Fibonacci en Java:
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+1. **Fibonacci Recursivo:**  
+   Se utiliza una función recursiva simple que llama a sí misma para calcular el valor de Fibonacci de un número `n`. Esta versión es sencilla pero ineficiente para valores grandes, ya que recalcula muchas veces los mismos valores, lo que genera una complejidad exponencial.
+
+2. **Fibonacci con Programación Dinámica (Memoización):**  
+   Se utiliza un mapa (`HashMap`) para almacenar los resultados ya calculados de la función de Fibonacci. Así, cada vez que se necesita un valor ya calculado, se recupera directamente del mapa, evitando cálculos repetidos y mejorando drásticamente la eficiencia. Esta técnica reduce la complejidad a O(n).
+
+### Resultados de Ejemplo
+
+- **Fibonacci Recursivo (n=50):**  
+  Resultado: 12586269025  
+  Tiempo de ejecución: (puede ser muy alto)
+
+- **Fibonacci con Memoización (n=50):**  
+  Resultado: 12586269025  
+  Tiempo de ejecución: (muy bajo comparado con el recursivo)
+
+---
+
+## Conclusión
+
+La programación dinámica permite optimizar algoritmos recursivos costosos, como el cálculo de Fibonacci, mediante el almacenamiento de resultados intermedios. Esto demuestra la importancia de elegir la técnica adecuada para resolver problemas de eficiencia en programación.
+
+---
+
+**¡Gracias por revisar mi trabajo!**
