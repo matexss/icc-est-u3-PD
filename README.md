@@ -3,9 +3,9 @@
 
 ---
 
-## Carátula
 
-**Nombre:** Mateo  
+**Nombre:** Mateo Morejon 
+
 **Fecha:** 16 de julio de 2025  
 **Tema:** Programación Dinámica - Fibonacci Recursivo y con Memoización
 
