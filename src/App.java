@@ -1,62 +1,77 @@
-
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // runEjerciciosPD();
+        //runEjerciciosPD();
         runMaze();
     }
 
-    public static void runEjerciciosPD(){
-        EjerciciosPD jPD = new EjerciciosPD();
-        System.out.println("-- Fibonacci Recursivo ----------------");
-        long start = System.nanoTime();
-        long resultado = jPD.getFibonacci(100);
-        long end = System.nanoTime();
-        long duration = end - start;
-        System.out.println("Resultado: " + resultado + " en tiempo " + duration);
-
-        System.out.println("\n-- Fibonacci Recursivo Caching ----------------");
-        start = System.nanoTime();
-        resultado = jPD.getFibonacciPD(50);
-        end = System.nanoTime();
-        duration = end - start;
-        System.out.println("Resultado: " + resultado + " en tiempo " + duration);
-    }
-
-    public static void runMaze(){
+    private static void runMaze() {
         boolean[][] predefinedMaze = {
-            {true , true, true, true},
-            {false, true, true , true},
-            {true, true, false, false},
-            {true, true, true, true}
+            {true,true,true,true},
+            {false,true,false,true},
+            {true,true,false,false},
+            {true,true,true,true}
         };
-
         Maze maze = new Maze(predefinedMaze);
-        System.out.println("-- Laberinto ----------------");
+        System.out.println("Laberiton Cargado");
         maze.printMaze();
+        
+        Cell star = new Cell(0, 0);
+        Cell end = new Cell(3, 3);
+        
+        List<MazeSolver> solvers = Arrays.asList(new MazeSolverRecursivo(),new MazeSolverRecursivoFour(), new MazeSolverRecursivoCompletoBT());
+        MazeSolver solver1 = solvers.get(0);
+        MazeResult path1;
+        path1 = solver1.getPath(maze.maze, star, end);
 
-        Cell start = new Cell(1, 2);
-        Cell end =  new Cell(3, 3);
-        List<MazeSolver> solvers = Arrays.asList(
-            new MazeSolverRecursive(),
-            new MazeSolverCompletoRecursivo());
+        System.out.println("\nCamino encontrado con MazeSolverRecurivo:");
+        System.out.println(path1);
+        
+        MazeSolver solver2 = solvers.get(1);
+        MazeResult path2;
+        path2 = solver2.getPath(maze.maze, star, end);
+        System.out.println("\nCamino encontrado con MazeSolverRecursivoFour:");
+        System.out.println(path2);
 
-        MazeSolver solver = solvers.get(0);
-        List<Cell> path;
-        path = solver.getPath(maze.getGrid(), start, end);
+        System.out.println("\nCamino encontrado con MazeSolverRecursivoCompletoBT:");
+        MazeSolver solver3 = solvers.get(2);
+        MazeResult path3;
 
-        System.out.println("\nCamino encontrado: ");
-        System.out.println("Matriz: " + path);
-        solver = solvers.get(1);
-        path = solver.getPath(maze.getGrid(), start, end);
+        path3 = solver3.getPath(maze.maze, star, end);
+        System.out.println(path3);
 
-        System.out.println("\nCamino encontrado (4 direcciones)");
-        if (path.isEmpty()) {
-            System.out.println("No se encontró camino");
-        } else {
-            System.out.println(path);
-        }
+        System.out.println("\nCamino visitado");
+        maze.printMazeVisited(path3);
+
+        System.out.println("\nCamino completo y optimo");
+        maze.printMazePath(path3);
+        
+        
+        
     }
+
+    private static void runEjerciciosPD() {
+        EjerciciosPD ejerciciosPD = new EjerciciosPD();
+        System.out.println("Ejercicio fibonaci recursivo");
+        long start = System.nanoTime();
+        long resultado= ejerciciosPD.getFibonaci(100);
+        long end = System.nanoTime(); 
+        long duration = end-start;
+        double durationSegundos = duration / 1_000_000_000.0;
+        System.out.println("Resultado: " + resultado + " en tiempo = " + duration + " ns (" + durationSegundos + " segundos)");
+
+
+        
+        System.out.println("Ejercicio fibonaci recursivo con PD");
+        start = System.nanoTime();
+        resultado= ejerciciosPD.getFibonaciPD(100);
+        end = System.nanoTime(); 
+        duration = end-start;
+        durationSegundos = duration / 1_000_000_000.0;
+        System.out.println("Resultado: " + resultado + " en tiempo = " + duration + " ns (" + durationSegundos + " segundos)");
+
+    }
+
+
 }
