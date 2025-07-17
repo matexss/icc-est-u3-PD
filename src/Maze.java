@@ -1,21 +1,21 @@
 public class Maze {
-    private boolean[][] maze;
 
-    public Maze(boolean[][] maze) {
-        this.maze = maze;
+    private final boolean[][] predefinedMaze; 
+
+    public Maze(boolean[][] predefinedMaze) {
+        this.predefinedMaze = predefinedMaze;
     }
 
     public void printMaze() {
-        for (boolean[] row : maze) {
-            for (int j = 0; j < row.length; j++) {
-                System.out.print(row[j] ? "-" : "*");
-                if (j < row.length - 1) {
-                    System.out.print(" ");
-                }
+        for (boolean[] row : predefinedMaze) {
+            for (boolean cell : row) {
+                System.out.print(cell ? " - " : " * ");
             }
             System.out.println();
         }
     }
 
-    
+    public boolean[][] getGrid() {
+        return predefinedMaze;
+    }
 }

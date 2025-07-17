@@ -1,4 +1,4 @@
-# Universidad [Nombre de tu Universidad]
+# Universidad Politécnica Salesiana
 # Estructura de Datos - Ciclo 2
 
 ---
@@ -11,8 +11,11 @@
 
 ---
 
-## imagen
+## IMAGEN 1
 ![alt text](image.png)
+
+## IMAGEN 2
+![alt text](image-1.png)
 
 ## Resumen
 
